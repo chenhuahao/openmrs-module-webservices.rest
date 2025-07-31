@@ -42,7 +42,14 @@ public class ChangePasswordController1_8 extends BaseRestController {
 	@Qualifier("userService")
 	@Autowired
 	private UserService userService;
-	
+
+	/**
+	 * Changes the password for the currently authenticated user.
+	 *
+	 * @param body Map containing "oldPassword" and "newPassword"
+	 * @throws APIAuthenticationException if user is not authenticated
+	 * @throws ValidationException if old password is incorrect
+	 */
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.OK)
 	public void changeOwnPassword(@RequestBody Map<String, String> body) {
